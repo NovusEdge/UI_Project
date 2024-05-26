@@ -1,0 +1,73 @@
+<BaseMDNavigationItem>
+    MDNavigationItemIcon:
+        icon: root.icon
+
+    MDNavigationItemLabel:
+        text: root.text
+
+
+MDFloatLayout:
+    orientation: "vertical"
+    md_bg_color: self.theme_cls.backgroundColor
+
+    MDScreenManager:
+        id: screen_manager
+        
+        MDScreen:
+            name: "Map"
+
+            MapView:
+                lat: 60.9827 
+                lon: 25.6612 
+                zoom: 15
+                
+                MapMarker:
+                    lat: 60.983542
+                    lon: 25.663951
+                    source: "assets/my_location.png"
+
+                MapMarker:
+                    lat: 60.98229
+                    lon: 25.654719
+                    source: "assets/friend.png"
+
+            
+            MDFabButton:   
+                icon: "alert-octagon"           
+                pos_hint: {"right": .92, "top": .92}
+                style: "large"
+                on_release: app.on_emergency_button_press()
+
+            Image:
+                source: "assets/Resdri_Line.png"
+                size_hint: None, None
+                size: "228dp", "72dp"
+                pos_hint: {"center_x": .5, "center_y": .97}
+
+
+        MDScreen:
+            name: "Menu"
+            MDLabel:
+                text: "Menu"
+
+        MDScreen:
+            name: "Settings"
+            MDLabel:
+                text: "Settings"
+        
+
+    MDNavigationBar:
+        on_switch_tabs: app.on_switch_tabs(*args)
+
+        BaseMDNavigationItem
+            icon: "menu"
+            text: "Menu"
+
+        BaseMDNavigationItem
+            icon: "map-marker"
+            text: "Map"
+            active: True
+
+        BaseMDNavigationItem
+            icon: "cog"
+            text: "Settings"
