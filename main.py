@@ -15,17 +15,13 @@ from kivymd.uix.button import MDFabButton
 from kivymd.uix.appbar import MDTopAppBar
 from kivy.uix.image import Image
 
+from components.navbar import *
+from components.settings_list import *
+
 item_direction = ""
-
-
-class BaseMDNavigationItem(MDNavigationItem):
-    icon = StringProperty()
-    text = StringProperty()
-
 
 class BaseScreen(MDScreen):
     ...
-
 
 class Example(MDApp):
     def on_switch_tabs(
@@ -35,8 +31,6 @@ class Example(MDApp):
         item_icon: str,
         item_text: str,
     ):
-        global item_direction
-
         if item_text == "Menu":
             item_direction = "right"
         elif item_text == "Settings":
