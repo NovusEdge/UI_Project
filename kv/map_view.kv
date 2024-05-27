@@ -1,3 +1,5 @@
+#: include kv/settings_view.kv
+
 <BaseMDNavigationItem>
     MDNavigationItemIcon:
         icon: root.icon
@@ -51,23 +53,23 @@ MDFloatLayout:
                 text: "Menu"
 
         MDScreen:
-            name: "Settings"
-            # SettingsView:
-            #     id: settings_view        
-            text: "Settings"
+            name: 'Settings'
+            SettingsScreen:
+                name: "Settings"
 
-    MDNavigationBar:
+
+    BaseMDNavigationBar:
         on_switch_tabs: app.on_switch_tabs(*args)
 
-        BaseMDNavigationItem
+        BaseMDNavigationItem:
             icon: "menu"
             text: "Menu"
 
-        BaseMDNavigationItem
+        BaseMDNavigationItem:
             icon: "map-marker"
             text: "Map"
             active: True
 
-        BaseMDNavigationItem
+        BaseMDNavigationItem:
             icon: "cog"
             text: "Settings"
