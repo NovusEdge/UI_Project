@@ -31,6 +31,7 @@ class Example(MDApp):
         item_icon: str,
         item_text: str,
     ):
+        global item_direction
         if item_text == "Menu":
             item_direction = "right"
         elif item_text == "Settings":
