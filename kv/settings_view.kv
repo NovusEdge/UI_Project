@@ -1,37 +1,32 @@
 <SettingsListItem>
-    MDNavigationItemIcon:
+    MDListItemLeadingIcon:
         icon: root.icon
-
-    MDNavigationItemLabel:
+    
+    MDListItemHeadlineText:
         text: root.text
 
 <SettingsScreen>:
     name: 'Settings'
     MDTopAppBar:
         title: "Settings"
-        md_bg_color: app.theme_cls.primary_color
         left_action_items: [["menu", lambda x: app.on_menu()]]
         elevation: 10
 
     ScrollView:
         MDList:
             id: settings_list
-            OneLineAvatarListItem:
+            SettingsListItem:
                 text: "Accessibility"
-                ImageLeftWidget:
-                    source: "accessibility.png"
+                icon: "account"
 
-            OneLineAvatarListItem:
+            SettingsListItem:
                 text: "Privacy and Security"
-                ImageLeftWidget:
-                    source: "privacy.png"
+                icon: "shield"
 
-            OneLineAvatarListItem:
+            SettingsListItem:
                 text: "App Settings"
-                ImageLeftWidget:
-                    source: "cog.png"
+                icon: "cog"
 
-            OneLineAvatarListItem:
+            SettingsListItem:
                 text: "Notifications"
-                ImageLeftWidget:
-                    source: "notifications.png"
+                icon: "bell"

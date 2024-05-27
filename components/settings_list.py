@@ -9,11 +9,12 @@ from kivymd.uix.screen import MDScreen
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
-from kivymd.uix.list import OneLineAvatarListItem
+from kivymd.uix.list import MDListItem, MDList
       
-class SettingsListItem(OneLineAvatarListItem):
+
+class SettingsListItem(MDListItem):
+    icon = StringProperty()
     text = StringProperty()
-    source = StringProperty()
 
 class SettingsScreen(Screen):
     pass
