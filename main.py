@@ -17,11 +17,12 @@ from kivy.uix.image import Image
 
 from components.navbar import *
 from components.settings_list import *
+from components.top_bar import *
 
 item_direction = ""
 
 class BaseScreen(MDScreen):
-    ...
+    pass
 
 class Example(MDApp):
     def on_switch_tabs(
@@ -45,7 +46,7 @@ class Example(MDApp):
         self.root.ids.screen_manager.transition = SlideTransition(direction=item_direction)
         self.root.ids.screen_manager.current = item_text
 
-    def on_emergency_button_press():
+    def on_emergency_button_press(self):
         print("Emergency button pressed")
 
     def build(self):
