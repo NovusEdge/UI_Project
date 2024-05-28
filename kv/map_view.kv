@@ -6,10 +6,10 @@
     MDNavigationItemLabel:
         text: root.text
 
-
-MDFloatLayout:
+MDBoxLayout:
     orientation: "vertical"
-    md_bg_color: self.theme_cls.backgroundColor
+
+    
 
     MDScreenManager:
         id: screen_manager
@@ -17,7 +17,39 @@ MDFloatLayout:
         MDScreen:
             name: "Map"
 
+
+            MDNavigationRail:
+                type: "selected"
+                id: nav_rail
+                size_hint_x : 0.22
+                pos_hint: {"top": .93}
+
+                MDNavigationRailFabButton:
+                    icon: "home"
+
+            MDTopAppBar:
+                type: "small"
+                size_hint_x: 1
+                pos_hint: {"center_x": .5, "top": 1}
+
+                MDTopAppBarLeadingButtonContainer:
+
+                    MDActionTopAppBarButton:
+                        icon: "menu"
+                        on_release: app.toggle_nav_rail()
+
+                MDTopAppBarTitle:
+                    pos_hint: {"center_x": 1}
+                    text: "                           Lahti                           "
+
+                MDTopAppBarTrailingButtonContainer:
+
+                    MDActionTopAppBarButton:
+                        icon: "account-circle-outline"
+
             MapView:
+                size_hint_x: 0.78 if app.rail_visible else 1
+                pos_hint: {"right": 1, "top": .93}
                 lat: 60.9827 
                 lon: 25.6612 
                 zoom: 15
@@ -32,19 +64,6 @@ MDFloatLayout:
                     lon: 25.654719
                     source: "assets/friend.png"
 
-            
-            MDFabButton:   
-                icon: "alert-octagon"           
-                pos_hint: {"right": .92, "top": .92}
-                style: "large"
-                on_release: app.on_emergency_button_press()
-
-            Image:
-                source: "assets/Resdri_Line.png"
-                size_hint: None, None
-                size: "228dp", "72dp"
-                pos_hint: {"center_x": .5, "center_y": .97}
-
 
         MDScreen:
             name: "Menu"
@@ -52,9 +71,9 @@ MDFloatLayout:
                 text: "Menu"
 
         MDScreen:
-            name: 'Settings'
+            name: 'Friends'
             SettingsScreen:
-                name: "Settings"
+                name: "Friends"
 
 
     BaseMDNavigationBar:
@@ -70,5 +89,5 @@ MDFloatLayout:
             active: True
 
         BaseMDNavigationItem:
-            icon: "cog"
-            text: "Settings"
+            icon: "account-group"
+            text: "Friends"

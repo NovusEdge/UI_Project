@@ -1,5 +1,5 @@
 from kivy.lang import Builder
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, BooleanProperty
 
 from kivy.config import Config
 Config.set('graphics', 'width', '450')
@@ -14,6 +14,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.button import MDFabButton
 from kivymd.uix.appbar import MDTopAppBar
 from kivy.uix.image import Image
+from kivymd.uix.navigationrail import MDNavigationRail, MDNavigationRailItem
 
 from components.navbar import *
 from components.settings_list import *
@@ -25,6 +26,8 @@ class BaseScreen(MDScreen):
     pass
 
 class Example(MDApp):
+    rail_visible = BooleanProperty(False)
+
     def on_switch_tabs(
         self,
         bar: MDNavigationBar,
@@ -35,7 +38,7 @@ class Example(MDApp):
         global item_direction
         if item_text == "Menu":
             item_direction = "right"
-        elif item_text == "Settings":
+        elif item_text == "Friends":
             item_direction = "left"
         else:
             if item_direction == "right":
@@ -56,5 +59,7 @@ class Example(MDApp):
     def search_callback(self):
         print("Search button pressed")
 
+    def toggle_nav_rail(self):
+        self.rail_visible = not self.rail_visible
 
 Example().run()
