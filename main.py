@@ -49,6 +49,11 @@ class Example(MDApp):
         self.root.ids.screen_manager.transition = SlideTransition(direction=item_direction)
         self.root.ids.screen_manager.current = item_text
 
+    def switch_screen(self, screen_name):
+        self.root.ids.screen_manager.current = screen_name
+        self.root.ids.nav_rail.set_active_item(None)
+        self.root.ids.nav_bar.set_active_item(None)
+    
     def on_emergency_button_press(self):
         print("Emergency button pressed")
 

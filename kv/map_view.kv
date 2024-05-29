@@ -6,10 +6,9 @@
     MDNavigationItemLabel:
         text: root.text
 
-MDBoxLayout:
-    orientation: "vertical"
 
-    
+MDBoxLayout:
+    orientation: "vertical"    
 
     MDScreenManager:
         id: screen_manager
@@ -17,15 +16,62 @@ MDBoxLayout:
         MDScreen:
             name: "Map"
 
-
             MDNavigationRail:
-                type: "selected"
+                anchor: "top"
+                type: "labeled"
                 id: nav_rail
                 size_hint_x : 0.22
                 pos_hint: {"top": .93}
 
                 MDNavigationRailFabButton:
-                    icon: "home"
+                    icon: "home-outline"
+                
+                MDLabel:
+                    text: "Home"
+                    pos_hint: {"center_x": 0.82, "center_y": 0.885}
+                    text_color: 1, 1, 1, 1
+                    font_style: "Label"
+                    font_role: "small"
+                    font_size: "4"
+
+                MDNavigationRailItem
+
+                    MDNavigationRailItemIcon:
+                        icon: "magnify"
+
+                    MDNavigationRailItemLabel:
+                        text: "Search"
+                
+                MDNavigationRailItem
+
+                    MDNavigationRailItemIcon:
+                        icon: "email-outline"
+
+                        MDBadge:
+                            text: "  "
+
+                    MDNavigationRailItemLabel:
+                        text: "Messages"
+
+                MDNavigationRailItem
+
+                    MDNavigationRailItemIcon:
+                        icon: "bell-outline"
+
+                        MDBadge:
+                            text: "9+"
+
+                    MDNavigationRailItemLabel:
+                        text: "Notifications"
+                
+                MDNavigationRailItem
+                    on_active: app.switch_screen("Settings")
+
+                    MDNavigationRailItemIcon:
+                        icon: "cog-outline"
+
+                    MDNavigationRailItemLabel:
+                        text: "Settings"
 
             MDTopAppBar:
                 type: "small"
@@ -66,22 +112,31 @@ MDBoxLayout:
 
 
         MDScreen:
-            name: "Menu"
+            name: "Emergency"
             MDLabel:
-                text: "Menu"
+                text: "Emergency"
+                text_color: 1, 1, 1, 1
 
         MDScreen:
             name: 'Friends'
+            MDLabel:
+                text: "Friends"
+                text_color: 1, 1, 1, 1
+
+        MDScreen:
+            name: "Settings"
             SettingsScreen:
-                name: "Friends"
+                name: "Settings"
 
 
     BaseMDNavigationBar:
+        id: nav_bar
         on_switch_tabs: app.on_switch_tabs(*args)
 
         BaseMDNavigationItem:
-            icon: "menu"
-            text: "Menu"
+            icon: "alert-rhombus-outline"
+            text: "Emergency"
+            indicator_color: 119, 0, 0, 0.3
 
         BaseMDNavigationItem:
             icon: "map-marker"
